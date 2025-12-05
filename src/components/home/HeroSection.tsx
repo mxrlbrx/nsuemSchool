@@ -21,7 +21,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section className="min-h-[80vh] flex items-center justify-center px-8 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-radial from-nsuem-dark/0 to-nsuem-dark pointer-events-none"></div>
-      <div className="absolute inset-0 bg-[url('/public/code.jpg')] bg-cover bg-center opacity-10 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[url('/code.jpg')] bg-cover bg-center opacity-10 pointer-events-none"></div>
       
       <div className="container mx-auto max-w-7xl text-center z-10 animate-fade-in">
         <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-5xl font-regular leading-tight mb-10">

@@ -66,7 +66,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className="flex justify-between items-center w-full">
       <Link to="/" className="animate-fade-in">
         <div className="flex items-center gap-2">
-          <img src="/public/fullLogoLight.png" alt="nsuemLogo" />
+          <img src="/fullLogoLight.png" alt="nsuemLogo" />
         </div>
       </Link>
       
@@ -149,7 +149,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="flex flex-col h-full p-6">
           <div className="flex justify-between items-center mb-10">
             <Link to="/" className="flex items-center gap-2" onClick={closeMobileMenu}>
-              <img src="/public/fullLogoLight.png" alt="nsuemLogo" />
+              <img src="/fullLogoLight.png" alt="nsuemLogo" />
             </Link>
             <button 
               className="text-white hover:text-nsuem-orange"
@@ -225,7 +225,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="container mx-auto max-w-7xl">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-2">
-              <img src="/public/fullLogoLight.png" alt="nsuemLogo" />
+              <img src="/fullLogoLight.png" alt="nsuemLogo" />
             </div>
             
             <div className="flex flex-col md:flex-row items-center gap-6 text-sm text-gray-400">
@@ -234,13 +234,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             
             <div className="flex gap-4">
               <a href="https://vk.com/nsuem" aria-label="vk" className="hover:text-nsuem-orange transition-colors" target="_blank">
-                <img src="/public/icons/vk.svg" alt="vk"/>
+                <img src="/icons/vk.svg" alt="vk"/>
               </a>
               <a href="https://t.me/prepod_inside" aria-label="telegram" className="hover:text-nsuem-orange transition-colors" target="_blank">
-                <img src="/public/icons/telegram.svg" alt="telegram"/>
+                <img src="/icons/telegram.svg" alt="telegram"/>
               </a>
               <a href="https://www.twitch.tv/prepod_inside" aria-label="vk" className="hover:text-nsuem-orange transition-colors" target="_blank">
-                <img src="/public/icons/twitch.svg" alt="twitch"/>
+                <img src="/icons/twitch.svg" alt="twitch"/>
               </a>
             </div>
           </div>
