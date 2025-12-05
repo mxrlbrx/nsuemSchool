@@ -123,10 +123,11 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user, updateProfile }) => {
               </Button>
             </PopoverTrigger>
             <PopoverContent 
-              className="w-full p-0" 
+              className="w-full p-0 z-50" 
               align="start" 
               side="bottom"
               sideOffset={4}
+              avoidCollisions={false}
             >
               <Calendar
                 mode="single"
