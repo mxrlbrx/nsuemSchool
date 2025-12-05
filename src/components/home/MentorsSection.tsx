@@ -1,17 +1,17 @@
 
 import React from 'react';
 
-import petrovPhoto from '../../../public/assets/img/mentors/1petrov_artem.png';
-import pyatnizevPhoto from '../../../public/assets/img/mentors/2pyatnizev_danil.png';
-import kosyrevPhoto from '../../../public/assets/img/mentors/3kosyrev_evgeniy.png';
-import myroshnikovPhoto from '../../../public/assets/img/mentors/4miroshnikov_andrey.png';
-import stepanovPhoto from '../../../public/assets/img/mentors/5stepanov_andrey.png';
-import gorbenkoPhoto from '../../../public/assets/img/mentors/6alexey_gorbenko.png';
-import suhorukovPhoto from '../../../public/assets/img/mentors/7suhorukov_konstantin.png';
-import cherepovaPhoto from '../../../public/assets/img/mentors/8cherepova_july.png';
-import tereshenkoPhoto from '../../../public/assets/img/mentors/9tereshenko_sergey.png';
-import streltzovPhoto from '../../../public/assets/img/mentors/10streltzov_evgeniy.png';
-import kotovaPhoto from '../../../public/assets/img/mentors/11kotova_anastasia.png';
+import petrovPhoto from '/public/mentors/1petrov_artem.png';
+import pyatnizevPhoto from '/public/mentors/2pyatnizev_danil.png';
+import kosyrevPhoto from '/public/mentors/3kosyrev_evgeniy.png';
+import myroshnikovPhoto from '/public/mentors/4miroshnikov_andrey.png';
+import stepanovPhoto from '/public/mentors/5stepanov_andrey.png';
+import gorbenkoPhoto from '/public/mentors/6alexey_gorbenko.png';
+import suhorukovPhoto from '/public/mentors/7suhorukov_konstantin.png';
+import cherepovaPhoto from '/public/mentors/8cherepova_july.png';
+import tereshenkoPhoto from '/public/mentors/9tereshenko_sergey.png';
+import streltzovPhoto from '/public/mentors/10streltzov_evgeniy.png';
+import kotovaPhoto from '/public/mentors/11kotova_anastasia.png';
 
 
 interface MentorProps {

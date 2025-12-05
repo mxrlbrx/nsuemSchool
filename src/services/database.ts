@@ -2,7 +2,6 @@
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
-// Define interfaces for our data structures
 export interface User {
   id: string;
   fullName: string;
@@ -31,18 +30,15 @@ export interface SiteContent {
   imageUrl?: string;
 }
 
-// Database implementation using Supabase
 class DatabaseService {
   private currentUserKey = 'nsuem_current_user';
   
   constructor() {
-    // Initialize will happen on demand
   }
   
   // User Authentication Methods
   async register(user: Omit<User, 'id' | 'isAdmin'>): Promise<User | null> {
     try {
-      // Check if email already exists
       const { data: existingEmailUsers } = await supabase
         .from('NSUEM_users')
         .select('*')
@@ -52,8 +48,7 @@ class DatabaseService {
         toast.error('Пользователь с таким email уже существует');
         return null;
       }
-      
-      // Check if username already exists
+
       if (user.username) {
         const { data: existingUsernameUsers } = await supabase
           .from('NSUEM_users')
@@ -66,7 +61,6 @@ class DatabaseService {
         }
       }
       
-      // Insert new user
       const { data, error } = await supabase
         .from('NSUEM_users')
         .insert([
@@ -88,7 +82,6 @@ class DatabaseService {
         return null;
       }
       
-      // Convert Supabase response to our User interface
       const newUser: User = {
         id: data.id.toString(),
         fullName: data.full_name,
@@ -100,7 +93,6 @@ class DatabaseService {
         isAdmin: false
       };
       
-      // Auto login after registration
       localStorage.setItem(this.currentUserKey, JSON.stringify(newUser));
       
       toast.success('Регистрация успешна');
@@ -114,7 +106,6 @@ class DatabaseService {
   
   async login(loginIdentifier: string, password: string): Promise<User | null> {
     try {
-      // Check for admin credentials
       if (loginIdentifier === "admin" && password === "nsuemadmin54") {
         const adminUser: User = {
           id: "admin",
@@ -130,8 +121,7 @@ class DatabaseService {
         toast.success('Вход выполнен успешно');
         return adminUser;
       }
-      
-      // Try login with email
+
       let { data, error } = await supabase
         .from('NSUEM_users')
         .select('*')
@@ -139,7 +129,6 @@ class DatabaseService {
         .eq('password', password)
         .maybeSingle();
       
-      // If no user found with email, try with username
       if (!data) {
         const result = await supabase
           .from('NSUEM_users')
@@ -157,7 +146,6 @@ class DatabaseService {
         return null;
       }
       
-      // Convert Supabase response to our User interface
       const user: User = {
         id: data.id.toString(),
         fullName: data.full_name,
@@ -166,7 +154,7 @@ class DatabaseService {
         username: data.username,
         password: data.password,
         birthdate: data.birthdate,
-        isAdmin: false // Regular users are not admins
+        isAdmin: false
       };
       
       localStorage.setItem(this.currentUserKey, JSON.stringify(user));
@@ -191,7 +179,6 @@ class DatabaseService {
   
   async updateCurrentUser(user: User): Promise<void> {
     try {
-      // Skip updating admin user in database since it's not stored there
       if (user.id === "admin") {
         localStorage.setItem(this.currentUserKey, JSON.stringify(user));
         toast.success('Профиль обновлен');
@@ -208,7 +195,7 @@ class DatabaseService {
           password: user.password,
           birthdate: user.birthdate || null
         })
-        .eq('id', parseInt(user.id)); // Convert string to number
+        .eq('id', parseInt(user.id));
       
       if (error) {
         console.error('Update user error:', error);
@@ -224,7 +211,6 @@ class DatabaseService {
     }
   }
   
-  // User Management Methods
   async getUsers(): Promise<User[]> {
     try {
       const { data, error } = await supabase
@@ -237,7 +223,6 @@ class DatabaseService {
         return [];
       }
       
-      // Convert Supabase response to our User interface
       return data.map(user => ({
         id: user.id.toString(),
         fullName: user.full_name,
@@ -246,7 +231,7 @@ class DatabaseService {
         username: user.username,
         password: user.password,
         birthdate: user.birthdate,
-        isAdmin: false // Add this column if needed
+        isAdmin: false
       }));
     } catch (error) {
       console.error('Get users error:', error);
@@ -326,7 +311,6 @@ class DatabaseService {
   
   async updateUser(user: User): Promise<void> {
     try {
-      // Check if email already exists (excluding current user)
       const { data: existingEmailUsers } = await supabase
         .from('NSUEM_users')
         .select('*')
@@ -338,7 +322,6 @@ class DatabaseService {
         return;
       }
       
-      // Check if username already exists (excluding current user)
       if (user.username) {
         const { data: existingUsernameUsers } = await supabase
           .from('NSUEM_users')
@@ -558,7 +541,6 @@ class DatabaseService {
   
   async updateSiteContent(content: SiteContent): Promise<void> {
     try {
-      // Check if content with this section exists
       const { data: existingContent } = await supabase
         .from('site_content')
         .select('*')
@@ -581,7 +563,6 @@ class DatabaseService {
           return;
         }
       } else {
-        // Insert new content
         const { error } = await supabase
           .from('site_content')
           .insert([

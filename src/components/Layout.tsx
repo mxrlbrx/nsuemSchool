@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { ArrowLeft, User, LogOut, Menu, X } from 'lucide-react';
+import { User, LogOut, Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 
 interface LayoutProps {
@@ -48,7 +48,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     
     if (location.pathname !== '/') {
       navigate('/');
-      // Allow time for navigation before scrolling
       setTimeout(() => {
         const section = document.getElementById(sectionId);
         if (section) {
@@ -63,14 +62,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     }
   };
 
-  // Header content shared between main and floating headers
   const headerContent = (
     <div className="flex justify-between items-center w-full">
       <Link to="/" className="animate-fade-in">
         <div className="flex items-center gap-2">
-          <a href="#">
-            <img src="../assets/img/logoWhite.png" alt="nsuemLogo" />
-          </a>
+          <img src="/public/fullLogoLight.png" alt="nsuemLogo" />
         </div>
       </Link>
       
@@ -153,9 +149,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="flex flex-col h-full p-6">
           <div className="flex justify-between items-center mb-10">
             <Link to="/" className="flex items-center gap-2" onClick={closeMobileMenu}>
-              <a href="#">
-                <img src="../assets/img/logoWhite.png" alt="nsuemLogo" />
-              </a>
+              <img src="/public/fullLogoLight.png" alt="nsuemLogo" />
             </Link>
             <button 
               className="text-white hover:text-nsuem-orange"
@@ -231,28 +225,22 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="container mx-auto max-w-7xl">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-2">
-              <a href="#">
-                <img src="../assets/img/logoWhite.png" alt="nsuemLogo" />
-              </a>
+              <img src="/public/fullLogoLight.png" alt="nsuemLogo" />
             </div>
             
             <div className="flex flex-col md:flex-row items-center gap-6 text-sm text-gray-400">
               <span>© 2024 NSUEM School. Все права защищены. Студенческий проект</span>
-              {/* <div className="flex gap-4">
-                <Link to="/terms" className="hover:text-white transition-colors">Условия использования</Link>
-                <Link to="/policy" className="hover:text-white transition-colors">Политика конфиденциальности</Link>
-              </div> */}
             </div>
             
             <div className="flex gap-4">
               <a href="https://vk.com/nsuem" aria-label="vk" className="hover:text-nsuem-orange transition-colors" target="_blank">
-                <img src="../../assets/img/icons/vk.svg" alt="vk"/>
+                <img src="/public/icons/vk.svg" alt="vk"/>
               </a>
               <a href="https://t.me/prepod_inside" aria-label="telegram" className="hover:text-nsuem-orange transition-colors" target="_blank">
-                <img src="../../assets/img/icons/telegram.svg" alt="telegram"/>
+                <img src="/public/icons/telegram.svg" alt="telegram"/>
               </a>
               <a href="https://www.twitch.tv/prepod_inside" aria-label="vk" className="hover:text-nsuem-orange transition-colors" target="_blank">
-                <img src="../../assets/img/icons/twitch.svg" alt="twitch"/>
+                <img src="/public/icons/twitch.svg" alt="twitch"/>
               </a>
             </div>
           </div>

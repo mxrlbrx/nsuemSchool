@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { NewAdminLayout } from '../components/NewAdminLayout';
@@ -8,26 +7,53 @@ import { db, User } from '../services/database';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Edit, Trash2, Search } from 'lucide-react';
+import { Edit, Trash2, Search, Loader2 } from 'lucide-react';
 
 const Admin = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [users, setUsers] = useState<User[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [loading, setLoading] = useState(true);
 
-  React.useEffect(() => {
-    if (!user?.isAdmin) {
-      navigate('/');
-    } else {
-      loadUsers();
-    }
+  useEffect(() => {
+    const checkAccessAndLoad = async () => {
+      if (user === null) {
+        navigate('/');
+        return;
+      }
+      
+      if (user && !user.isAdmin) {
+        navigate('/');
+        return;
+      }
+      
+      if (user && user.isAdmin) {
+        setLoading(true);
+        const usersData = await db.getUsers();
+        setUsers(usersData);
+        setLoading(false);
+      }
+    };
+    
+    checkAccessAndLoad();
   }, [user, navigate]);
 
   const loadUsers = async () => {
     const usersData = await db.getUsers();
     setUsers(usersData);
   };
+
+  if (loading) {
+    return (
+      <NewAdminLayout title="Пользователи">
+        <div className="flex items-center justify-center h-96">
+          <Loader2 className="h-8 w-8 animate-spin text-nsuem-orange" />
+          <span className="ml-2 text-white">Загрузка...</span>
+        </div>
+      </NewAdminLayout>
+    );
+  }
 
   if (!user?.isAdmin) {
     return null;

@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { ArrowDown } from 'lucide-react';
 import { Button } from '../ui/button';
 
 interface HeroSectionProps {
@@ -22,20 +21,20 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section className="min-h-[80vh] flex items-center justify-center px-8 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-radial from-nsuem-dark/0 to-nsuem-dark pointer-events-none"></div>
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] bg-cover bg-center opacity-10 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[url('/public/code.jpg')] bg-cover bg-center opacity-10 pointer-events-none"></div>
       
       <div className="container mx-auto max-w-7xl text-center z-10 animate-fade-in">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-5xl font-regular leading-tight mb-10">
           {title}
         </h1>
         
-        <p className="text-xl text-gray-300 mb-12 whitespace-pre-line">
+        <p className="text-xl font-light text-gray-300 mb-16 whitespace-pre-line">
           {content}
         </p>
 
         <Button 
           onClick={scrollToConsultation}
-          className="bg-nsuem-orange hover:bg-nsuem-orange/90 text-white font-medium text-lg px-8 py-6 h-auto rounded-md"
+          className="bg-nsuem-orange hover:bg-nsuem-orange/90 text-white font-light text-lg px-8 py-6 h-4 w-23 rounded-3xl"
         >
           Записаться на консультацию
         </Button>

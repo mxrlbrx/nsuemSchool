@@ -87,7 +87,7 @@ const ConsultationForm: React.FC = () => {
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full h-12 bg-nsuem-orange hover:bg-nsuem-orange/90 transition-colors text-white text-lg font-medium"
+        className="w-full h-12 bg-nsuem-orange hover:bg-nsuem-orange/90 transition-colors text-white text-lg font-light rounded-3xl"
       >
         {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
       </Button>
