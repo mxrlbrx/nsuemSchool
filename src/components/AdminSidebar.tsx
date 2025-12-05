@@ -62,7 +62,7 @@ export function AdminSidebar() {
         <SidebarHeader className="p-6 bg-nsuem-gray">
           <Link to="/" className="flex items-center justify-center gap-2">
             <a href="#">
-              <img src="/public/fullLogoLight.png" alt="nsuemLogo" />
+              <img src="/fullLogoLight.png" alt="nsuemLogo" />
             </a>
           </Link>
         </SidebarHeader>
